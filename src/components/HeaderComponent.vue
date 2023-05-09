@@ -1,0 +1,40 @@
+<template>
+	<div class="header">
+		<i class="fa-solid fa-calculator"></i>
+		<div class="text">
+			<h1>Kalkulator Kalorii</h1>
+			<p>Zacznij budować formę na lata już teraz</p>
+		</div>
+	</div>
+</template>
+<script>
+export default {}
+</script>
+
+<style lang="scss">
+.header {
+	color: #fff;
+	display: flex;
+	justify-content: space-evenly;
+
+	i {
+		font-size: 5rem;
+	}
+
+	.text {
+		width: 60%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		text-align: center;
+
+		h1 {
+			font-size: 1.4rem;
+		}
+
+		p {
+			font-size: 0.8rem;
+		}
+	}
+}
+</style>

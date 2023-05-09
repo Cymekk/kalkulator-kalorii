@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AutoCalc from '../views/AutoCalcView.vue'
 
 const routes = [
 	{
 		path: '/',
 		name: 'home',
 		component: HomeView,
+	},
+	{
+		path: '/autocalc',
+		name: 'autocalc',
+		component: AutoCalc,
 	},
 ]
 

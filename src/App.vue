@@ -1,8 +1,17 @@
 <template>
 	<div class="wrapper">
+		<HeaderComponent />
 		<router-view />
 	</div>
 </template>
+
+<script>
+import HeaderComponent from './components/HeaderComponent.vue'
+
+export default {
+	components: { HeaderComponent },
+}
+</script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -24,6 +33,7 @@ body {
 }
 
 .wrapper {
+	padding: 1em;
 	max-width: 1200px;
 	margin: 0 auto;
 }
