@@ -25,9 +25,12 @@
 				@input="productWeight = $event.target.value"
 				:value="productWeight"
 			/>
-			<button @click="validateForm">
-				<router-link to="/" class="link" :class="{ disabled: isDisabled }">Dodaj</router-link>
-			</button>
+			<div class="buttons-box">
+				<button @click="goBack">Powrót</button>
+				<button @click="validateForm">
+					<router-link to="/" class="link" :class="{ disabled: isDisabled }">Dodaj</router-link>
+				</button>
+			</div>
 			<p v-if="errorVisbile" class="error">Waga produktu musi być większa od 0</p>
 		</div>
 	</main>
@@ -72,7 +75,11 @@ export default {
 			}
 		}
 
-		return { productWeight, errorVisbile, isDisabled, foodArr, ...toRefs(productToPush), validateForm }
+		function goBack() {
+			router.push({ name: 'addproductview' })
+		}
+
+		return { productWeight, errorVisbile, isDisabled, foodArr, ...toRefs(productToPush), validateForm, goBack }
 	},
 }
 </script>
@@ -131,15 +138,25 @@ export default {
 			}
 		}
 
-		button {
-			background-color: greenyellow;
-			width: 50%;
-			font-weight: bold;
-			border-radius: 8px;
+		.buttons-box {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			button {
+				background-color: greenyellow;
+				width: 35%;
+				font-weight: bold;
+				border-radius: 8px;
 
-			.link {
-				text-decoration: none;
-				color: #000;
+				&:first-child {
+					background-color: rgb(241, 146, 109);
+				}
+
+				.link {
+					text-decoration: none;
+					color: #000;
+				}
 			}
 		}
 

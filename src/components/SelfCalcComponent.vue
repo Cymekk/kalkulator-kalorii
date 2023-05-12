@@ -2,13 +2,33 @@
 	<div class="popup">
 		<div class="popup-body">
 			<h2>Uzupełnij wszystkie pola</h2>
-			<input type="number" placeholder="Ilość kalorii" @input="totalCalories = $event.target.value" />
-			<input type="number" placeholder="Ilość kalori z węglowodanów" @input="carbsCalories = $event.target.value" />
-			<input type="number" placeholder="Ilość kalori z białka" @input="proteinsCalories = $event.target.value" />
-			<input type="number" placeholder="Ilość kalori z tłuszczy" @input="fatsCalories = $event.target.value" />
-			<button @click="validateForm">
-				<router-link to="/" class="link" :class="{ disabled: isDisabled }">Zapisz</router-link>
-			</button>
+			<input
+				type="number"
+				placeholder="Wyporadź ilość KCAL jaką chcesz spożywać"
+				@input="totalCalories = $event.target.value"
+			/>
+			<input
+				type="number"
+				placeholder="Wprowadź ilość kalorii z węglowodanów"
+				@input="carbsCalories = $event.target.value"
+			/>
+			<input
+				type="number"
+				placeholder="Wprowadź ilość kalorii z białka"
+				@input="proteinsCalories = $event.target.value"
+			/>
+			<input
+				type="number"
+				placeholder="Wprowadź ilość kalorii z tłuszczy"
+				@input="fatsCalories = $event.target.value"
+			/>
+
+			<div class="buttons-box">
+				<button><router-link to="/">Powrót</router-link></button>
+				<button @click="validateForm">
+					<router-link to="/" :class="{ disabled: isDisabled }">Zapisz</router-link>
+				</button>
+			</div>
 			<p class="error"></p>
 		</div>
 	</div>
@@ -16,6 +36,7 @@
 <script>
 import { useStore } from 'vuex'
 import { ref, reactive, toRefs } from 'vue'
+import router from '@/router'
 
 export default {
 	setup() {
@@ -45,12 +66,11 @@ export default {
 				) {
 					error.textContent = 'Ilość wprowadzonych kalorii jest różna od sumy kalorii makroskładników'
 				} else {
-					let link = document.querySelector('.link')
 					isDisabled.value = false
 					error.textContent = ''
 					store.commit('ASSIGN_CALORIES', selfCalcState)
 					store.commit('STORE_CALORIES_AND_MAKROS')
-					link.click()
+					router.push({ name: 'home' })
 				}
 			} else {
 				error.textContent = 'Wszystkie pola muszą być uzupełnione'
@@ -73,8 +93,8 @@ export default {
 	align-items: center;
 
 	&-body {
-		padding: 1em;
-		width: 80%;
+		padding: 2em;
+		width: 90%;
 		min-height: 50svh;
 		background-color: lightblue;
 		margin: 0 auto;
@@ -85,11 +105,12 @@ export default {
 		align-items: center;
 
 		h2 {
-			font-size: 1.4rem;
+			font-size: 1.3rem;
+			margin-bottom: 1em;
 		}
 
 		input {
-			width: 60%;
+			width: 90%;
 			background: none;
 			border: none;
 			outline: none;
@@ -98,29 +119,39 @@ export default {
 		}
 
 		input::placeholder {
-			font-size: 0.75rem;
+			font-size: 0.7rem;
 		}
 
-		button {
-			width: 60%;
-			padding: 1em;
-			background: none;
-			border: none;
-			background-color: greenyellow;
-			border-radius: 8px;
-			font-weight: bold;
-		}
+		.buttons-box {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
 
+			button {
+				width: 40%;
+				padding: 1em;
+				background: none;
+				border: none;
+				background-color: greenyellow;
+				border-radius: 8px;
+				font-weight: bold;
+
+				&:first-child {
+					background-color: rgb(241, 146, 109);
+				}
+
+				a {
+					text-decoration: none;
+					color: #000;
+				}
+			}
+		}
 		.error {
 			color: red;
 			font-weight: bold;
 			font-size: 0.9rem;
 			text-align: center;
-		}
-
-		.link {
-			text-decoration: none;
-			color: #000;
 		}
 		.disabled {
 			pointer-events: none;

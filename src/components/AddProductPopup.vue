@@ -21,7 +21,10 @@
 				@input="fats = $event.target.value"
 				:value="fats"
 			/>
-			<button @click="validateForm">Dodaj</button>
+			<div class="buttons-box">
+				<button @click="closePopup">Powrót</button>
+				<button @click="validateForm">Dodaj</button>
+			</div>
 			<p class="add-product-error"></p>
 		</div>
 	</div>
@@ -41,6 +44,7 @@ export default {
 		})
 		function validateForm() {
 			let error = document.querySelector('.add-product-error')
+			let addProductPopup = document.querySelector('.add-product-popup')
 			if (
 				newProductInfo.name !== '' &&
 				newProductInfo.carbs !== '' &&
@@ -55,7 +59,7 @@ export default {
 					)
 					store.commit('PUSH_TO_ARRAY', newProductInfo)
 					error.textContent = ''
-					let addProductPopup = document.querySelector('.add-product-popup')
+					window.location.reload()
 					addProductPopup.classList.remove('active')
 					newProductInfo.name = ''
 					newProductInfo.calories = ''
@@ -63,14 +67,18 @@ export default {
 					newProductInfo.proteins = ''
 					newProductInfo.fats = ''
 					store.commit('STORE_FOOD_ARRAY')
-					store.commit('GET_FOOD_ARRAY')
 				}
 			} else {
 				error.textContent = 'Wszystkie pola muszą być uzupełnione'
 			}
 		}
 
-		return { ...toRefs(newProductInfo), validateForm }
+		function closePopup() {
+			let addProductPopup = document.querySelector('.add-product-popup')
+			addProductPopup.classList.remove('active')
+		}
+
+		return { ...toRefs(newProductInfo), validateForm, closePopup }
 	},
 }
 </script>
@@ -120,11 +128,22 @@ export default {
 			}
 		}
 
-		button {
-			background-color: greenyellow;
-			width: 50%;
-			border-radius: 8px;
-			font-weight: bold;
+		.buttons-box {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+
+			button {
+				background-color: greenyellow;
+				width: 40%;
+				border-radius: 8px;
+				font-weight: bold;
+
+				&:first-child {
+					background-color: rgb(241, 146, 109);
+				}
+			}
 		}
 
 		.add-product-error {

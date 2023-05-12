@@ -13,6 +13,8 @@ export default {
 	setup() {
 		const store = useStore()
 
+		store.commit('GET_WHICH_ARRAY')
+
 		let isActive = ref(false)
 		let pushToArray = ref(false)
 		let number = ref()

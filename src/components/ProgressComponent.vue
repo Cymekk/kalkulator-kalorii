@@ -1,22 +1,22 @@
 <template>
 	<div class="progress-box">
-		<div class="total">
+		<div class="total" :class="{ error: todaysCalories > totalCalories }">
 			<progress class="progress" :max="totalCalories" :value="todaysCalories"></progress>
 			<label>KCAL: {{ todaysCalories }}/{{ totalCalories }}</label>
 		</div>
 
 		<div class="macros-box">
-			<div class="small-box">
+			<div class="small-box" :class="{ error: todaysCarbs > carbs }">
 				<progress class="progress carbs" :max="carbs" :value="todaysCarbs"></progress>
 				<label>W: {{ todaysCarbs }}/{{ carbs }}g</label>
 			</div>
 
-			<div class="small-box">
+			<div class="small-box" :class="{ error: todaysProteins > proteins }">
 				<progress class="progress proteins" :max="proteins" :value="todaysProteins"></progress>
 				<label>B: {{ todaysProteins }}/{{ proteins }}g</label>
 			</div>
 
-			<div class="small-box">
+			<div class="small-box" :class="{ error: todaysFats > fats }">
 				<progress class="progress fats" :max="fats" :value="todaysFats"></progress>
 				<label>T: {{ todaysFats }}/{{ fats }}g</label>
 			</div>
@@ -61,7 +61,6 @@ export default {
 			() =>
 				store.state.breakfestFatsSum + store.state.lunchFatsSum + store.state.snacksFatsSum + store.state.dinnerFatsSum
 		)
-
 		return { totalCalories, carbs, proteins, fats, todaysCalories, todaysCarbs, todaysProteins, todaysFats }
 	},
 }
@@ -69,10 +68,12 @@ export default {
 <style lang="scss">
 .progress-box {
 	position: fixed;
+	padding: 1em;
 	bottom: 0;
-	width: 90%;
+	width: 100%;
 	left: 50%;
 	transform: translateX(-50%);
+	background-color: rgba(255, 255, 255, 0.6);
 
 	.total {
 		display: flex;
@@ -81,7 +82,6 @@ export default {
 		label {
 			font-size: 0.8rem;
 			width: 30%;
-			color: #fff;
 		}
 
 		progress {
@@ -95,7 +95,6 @@ export default {
 	}
 
 	.macros-box {
-		color: #fff;
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -110,12 +109,13 @@ export default {
 			}
 
 			label {
-				text-align: right;
+				text-align: center;
 				width: 60%;
+				font-weight: bold;
 			}
 
 			.carbs {
-				accent-color: red;
+				accent-color: rgb(255, 194, 102);
 			}
 
 			.proteins {
@@ -125,6 +125,20 @@ export default {
 			.fats {
 				accent-color: aquamarine;
 			}
+		}
+	}
+
+	.error {
+		label {
+			color: red;
+			font-weight: bold;
+		}
+
+		.progress,
+		.carbs,
+		.proteins,
+		.fats {
+			accent-color: red;
 		}
 	}
 }

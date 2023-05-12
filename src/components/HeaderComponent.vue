@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-		<i class="fa-solid fa-calculator"></i>
+		<i class="fa-solid fa-calculator" @click="goToMainPage"></i>
 		<div class="text">
 			<h1>Kalkulator Kalorii</h1>
 			<p>Zacznij budować formę na lata już dziś!</p>
@@ -8,7 +8,17 @@
 	</div>
 </template>
 <script>
-export default {}
+import router from '@/router'
+
+export default {
+	setup() {
+		function goToMainPage() {
+			router.push({ name: 'home' })
+		}
+
+		return { goToMainPage }
+	},
+}
 </script>
 
 <style lang="scss">

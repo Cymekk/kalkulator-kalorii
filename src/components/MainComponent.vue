@@ -162,6 +162,7 @@ export default {
 </script>
 <style lang="scss">
 .main {
+	margin-top: 2em;
 	min-height: 20svh;
 	background-color: rgba(255, 255, 255, 0.65);
 	border-radius: 10px;

@@ -29,15 +29,19 @@
 				<option value="500">Przybranie wagi</option>
 			</select>
 
-			<button @click="validateForm">
-				<router-link to="/" class="link" :class="{ disabled: !isDisabled }">Oblicz zapotrzebowanie</router-link>
-			</button>
+			<div class="buttons-box">
+				<button @click="goBack">Powrót</button>
+				<button @click="validateForm">
+					<router-link to="/" class="link" :class="{ disabled: !isDisabled }">Oblicz</router-link>
+				</button>
+			</div>
 
 			<p class="error" v-if="isError">Wszystkie pola muszą być wypełnione!</p>
 		</div>
 	</div>
 </template>
 <script>
+import router from '@/router'
 import { ref, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 
@@ -86,6 +90,10 @@ export default {
 			}
 		}
 
+		function goBack() {
+			router.push({ name: 'home' })
+		}
+
 		return {
 			isDisabled,
 			isError,
@@ -94,6 +102,7 @@ export default {
 			onActivityLevelChange,
 			onGoalChange,
 			validateForm,
+			goBack,
 		}
 	},
 }

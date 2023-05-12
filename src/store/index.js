@@ -118,6 +118,11 @@ const store = createStore({
 
 		ASSIGN_WHICH_ARRAY(state, text) {
 			state.whichArray = text
+			localStorage.setItem('whichArray', state.whichArray)
+		},
+
+		GET_WHICH_ARRAY(state) {
+			state.whichArray = localStorage.getItem('whichArray')
 		},
 
 		ASSIGN_INDEX(state, index) {

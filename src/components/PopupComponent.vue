@@ -26,15 +26,15 @@ export default {}
 	background-color: rgba(0, 0, 0, 0.5);
 
 	&-body {
-		padding: 1em;
-		width: 80%;
+		padding: 2em;
+		width: 90%;
 		min-height: 50svh;
 		background-color: lightblue;
 		margin: 0 auto;
-		border-radius: 25px;
+		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
 
 		img {
@@ -42,6 +42,7 @@ export default {}
 		}
 
 		h2 {
+			font-size: 1.2rem;
 			text-align: center;
 		}
 
@@ -52,8 +53,10 @@ export default {}
 
 			a {
 				width: 45%;
+
 				button {
 					width: 100%;
+					height: 100%;
 					padding: 1em;
 					background: none;
 					border: none;
