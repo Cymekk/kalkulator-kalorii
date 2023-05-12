@@ -28,12 +28,25 @@ body {
 	font-size: 62.5%;
 	font-family: 'Roboto', sans-serif;
 	min-height: 100svh;
-	background-color: #802201;
-	background-image: linear-gradient(326deg, #802201 0%, #210d10 74%);
+	background-image: url('./assets/warzywa-small.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&::after {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.45);
+		z-index: -1;
+	}
 }
 
 .wrapper {
-	padding: 1em;
+	padding: 2em 1em;
 	max-width: 1200px;
 	margin: 0 auto;
 }

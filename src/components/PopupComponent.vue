@@ -6,7 +6,7 @@
 
 			<div class="buttons-box">
 				<router-link to="/autocalc"><button>Oblicz automatycznie</button></router-link>
-				<button>Wpisz samodzielnie</button>
+				<router-link to="/selfcalc"><button>Wpisz samodzielnie</button></router-link>
 			</div>
 		</div>
 	</div>
@@ -50,14 +50,18 @@ export default {}
 			display: flex;
 			justify-content: space-between;
 
-			button {
-				padding: 1em;
-				background: none;
-				border: none;
-				font-weight: bold;
-				font-size: 0.8rem;
-				background-color: greenyellow;
-				border-radius: 8px;
+			a {
+				width: 45%;
+				button {
+					width: 100%;
+					padding: 1em;
+					background: none;
+					border: none;
+					font-weight: bold;
+					font-size: 0.8rem;
+					background-color: greenyellow;
+					border-radius: 8px;
+				}
 			}
 		}
 	}

@@ -79,6 +79,7 @@ export default {
 				let link = document.querySelector('.link')
 				link.click()
 				store.commit('CALC_CALORIES', autoCalcState)
+				store.commit('STORE_CALORIES_AND_MAKROS')
 			} else {
 				isError.value = true
 				isDisabled.value = false
@@ -131,6 +132,7 @@ export default {
 			background: none;
 			border: none;
 			outline: none;
+			border-bottom: 2px solid greenyellow;
 		}
 
 		select {

@@ -3,7 +3,7 @@
 		<i class="fa-solid fa-calculator"></i>
 		<div class="text">
 			<h1>Kalkulator Kalorii</h1>
-			<p>Zacznij budować formę na lata już teraz</p>
+			<p>Zacznij budować formę na lata już dziś!</p>
 		</div>
 	</div>
 </template>
@@ -13,6 +13,7 @@ export default {}
 
 <style lang="scss">
 .header {
+	min-height: 10svh;
 	color: #fff;
 	display: flex;
 	justify-content: space-evenly;
