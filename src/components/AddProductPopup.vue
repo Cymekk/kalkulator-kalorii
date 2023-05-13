@@ -157,4 +157,56 @@ export default {
 .active {
 	top: 0;
 }
+
+@media (min-width: 768px) {
+	.add-product-popup {
+		&-body {
+			width: 70%;
+
+			.buttons-box {
+				button {
+					width: 35%;
+				}
+			}
+		}
+	}
+
+	.active {
+		top: 0;
+	}
+}
+@media (min-width: 992px) {
+	.add-product-popup {
+		&-body {
+			width: 60%;
+
+			.buttons-box {
+				button {
+					width: 30%;
+				}
+			}
+		}
+	}
+
+	.active {
+		top: 0;
+	}
+}
+@media (min-width: 1200px) {
+	.add-product-popup {
+		&-body {
+			width: 50%;
+
+			.buttons-box {
+				button {
+					width: 25%;
+				}
+			}
+		}
+	}
+
+	.active {
+		top: 0;
+	}
+}
 </style>

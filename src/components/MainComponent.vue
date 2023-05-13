@@ -273,4 +273,27 @@ export default {
 		opacity: 1;
 	}
 }
+
+@media (min-width: 576px) {
+	.main {
+		width: 90%;
+		margin: 2em auto 0 auto;
+	}
+}
+@media (min-width: 768px) {
+	.main {
+		width: 80%;
+	}
+}
+@media (min-width: 992px) {
+	.main {
+		width: 70%;
+	}
+}
+
+@media (min-width: 1200px) {
+	.main {
+		width: 60%;
+	}
+}
 </style>

@@ -1,24 +1,26 @@
 <template>
 	<div class="progress-box">
-		<div class="total" :class="{ error: todaysCalories > totalCalories }">
-			<progress class="progress" :max="totalCalories" :value="todaysCalories"></progress>
-			<label>KCAL: {{ todaysCalories }}/{{ totalCalories }}</label>
-		</div>
-
-		<div class="macros-box">
-			<div class="small-box" :class="{ error: todaysCarbs > carbs }">
-				<progress class="progress carbs" :max="carbs" :value="todaysCarbs"></progress>
-				<label>W: {{ todaysCarbs }}/{{ carbs }}g</label>
+		<div class="container">
+			<div class="total" :class="{ error: todaysCalories > totalCalories }">
+				<progress class="progress" :max="totalCalories" :value="todaysCalories"></progress>
+				<label>KCAL: {{ todaysCalories }}/{{ totalCalories }}</label>
 			</div>
 
-			<div class="small-box" :class="{ error: todaysProteins > proteins }">
-				<progress class="progress proteins" :max="proteins" :value="todaysProteins"></progress>
-				<label>B: {{ todaysProteins }}/{{ proteins }}g</label>
-			</div>
+			<div class="macros-box">
+				<div class="small-box" :class="{ error: todaysCarbs > carbs }">
+					<progress class="progress carbs" :max="carbs" :value="todaysCarbs"></progress>
+					<label>W: {{ todaysCarbs }}/{{ carbs }}g</label>
+				</div>
 
-			<div class="small-box" :class="{ error: todaysFats > fats }">
-				<progress class="progress fats" :max="fats" :value="todaysFats"></progress>
-				<label>T: {{ todaysFats }}/{{ fats }}g</label>
+				<div class="small-box" :class="{ error: todaysProteins > proteins }">
+					<progress class="progress proteins" :max="proteins" :value="todaysProteins"></progress>
+					<label>B: {{ todaysProteins }}/{{ proteins }}g</label>
+				</div>
+
+				<div class="small-box" :class="{ error: todaysFats > fats }">
+					<progress class="progress fats" :max="fats" :value="todaysFats"></progress>
+					<label>T: {{ todaysFats }}/{{ fats }}g</label>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -75,70 +77,171 @@ export default {
 	transform: translateX(-50%);
 	background-color: rgba(255, 255, 255, 0.6);
 
-	.total {
-		display: flex;
-		justify-content: space-between;
-
-		label {
-			font-size: 0.8rem;
-			width: 30%;
-		}
-
-		progress {
-			width: 65%;
-			accent-color: coral;
-		}
-	}
-
-	.progress {
-		height: 15px;
-	}
-
-	.macros-box {
+	.container {
 		width: 100%;
-		display: flex;
-		justify-content: space-between;
+		max-width: 1200px;
+		margin: 0 auto;
+		.progress {
+			height: 15px;
+		}
 
-		.small-box {
-			width: 30%;
+		.total {
 			display: flex;
 			justify-content: space-between;
 
-			progress {
-				width: 35%;
+			label {
+				font-size: 0.8rem;
+				width: 25%;
+				text-align: right;
 			}
 
+			.progress {
+				width: 70%;
+				accent-color: coral;
+			}
+		}
+
+		.macros-box {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			margin-top: 1em;
+
+			.small-box {
+				width: 30%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				progress {
+					width: 40%;
+				}
+
+				label {
+					text-align: center;
+					width: 55%;
+					font-weight: bold;
+				}
+
+				.carbs {
+					accent-color: rgb(255, 194, 102);
+				}
+
+				.proteins {
+					accent-color: greenyellow;
+				}
+
+				.fats {
+					accent-color: aquamarine;
+				}
+			}
+		}
+
+		.error {
 			label {
-				text-align: center;
-				width: 60%;
+				color: red;
 				font-weight: bold;
 			}
 
-			.carbs {
-				accent-color: rgb(255, 194, 102);
-			}
-
-			.proteins {
-				accent-color: greenyellow;
-			}
-
+			.progress,
+			.carbs,
+			.proteins,
 			.fats {
-				accent-color: aquamarine;
+				accent-color: red;
 			}
 		}
 	}
+}
 
-	.error {
-		label {
-			color: red;
-			font-weight: bold;
+@media (min-width: 576px) {
+	.progress-box {
+		padding: 1.5em;
+
+		.container {
+			width: 90%;
+			.progress {
+				height: 15px;
+			}
+
+			.total {
+				align-items: center;
+				label {
+					font-size: 0.9rem;
+					width: 25%;
+					text-align: right;
+				}
+
+				.progress {
+					width: 70%;
+					accent-color: coral;
+				}
+			}
+
+			.macros-box {
+				.small-box {
+					progress {
+						width: 40%;
+					}
+
+					label {
+						width: 55%;
+						font-size: 0.7rem;
+						text-align: center;
+					}
+				}
+			}
 		}
+	}
+}
 
-		.progress,
-		.carbs,
-		.proteins,
-		.fats {
-			accent-color: red;
+@media (min-width: 768px) {
+	.progress-box {
+		padding: 2em;
+
+		.container {
+			width: 80%;
+			.progress {
+				height: 20px;
+			}
+
+			.total {
+				label {
+					width: 20%;
+					text-align: right;
+				}
+
+				.progress {
+					width: 85%;
+				}
+			}
+
+			.macros-box {
+				.small-box {
+					progress {
+						width: 60%;
+					}
+
+					label {
+						text-align: right;
+						width: 45%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.progress-box {
+		.container {
+			width: 70%;
+		}
+	}
+}
+@media (min-width: 1200px) {
+	.progress-box {
+		.container {
+			width: 60%;
 		}
 	}
 }

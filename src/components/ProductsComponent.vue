@@ -105,42 +105,83 @@ export default {
 			&:last-child {
 				border-radius: 0 0 10px 10px;
 			}
+		}
 
-			.name-and-button {
-				display: flex;
+		.name-and-button {
+			width: 90%;
+			margin: 0 auto;
+			position: relative;
+			height: 40px;
+			display: flex;
+			align-items: center;
+
+			p {
 				width: 100%;
-				margin: 0 auto;
-				justify-content: space-between;
-				align-items: center;
-
-				p {
-					width: 80%;
-					text-align: center;
-					font-weight: bold;
-					font-size: 1rem;
-				}
-
-				button {
-					width: 40px;
-					height: 40px;
-					background: none;
-					border: none;
-					border-radius: 50%;
-					background-image: url('../assets/plus.svg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-color: green;
-				}
-			}
-
-			.macros {
-				min-height: 5svh;
+				text-align: center;
+				font-weight: bold;
 				font-size: 1rem;
-				width: 100%;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
 			}
+
+			button {
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 40px;
+				height: 40px;
+				background: none;
+				border: none;
+				border-radius: 50%;
+				background-image: url('../assets/plus.svg');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-color: green;
+			}
+		}
+
+		.macros {
+			min-height: 5svh;
+			font-size: 1rem;
+			width: 90%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.products {
+		padding: 2em;
+	}
+}
+@media (min-width: 768px) {
+	.products {
+		padding: 2em;
+
+		&-container {
+			width: 80%;
+			margin: 0 auto;
+		}
+	}
+}
+@media (min-width: 992px) {
+	.products {
+		padding: 2em;
+
+		&-container {
+			width: 60%;
+			margin: 0 auto;
+		}
+	}
+}
+@media (min-width: 1200px) {
+	.products {
+		padding: 2em;
+
+		&-container {
+			width: 50%;
+			margin: 0 auto;
 		}
 	}
 }

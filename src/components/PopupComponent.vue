@@ -16,27 +16,8 @@ export default {}
 </script>
 <style lang="scss" scoped>
 .popup {
-	position: fixed;
-	display: flex;
-	align-items: center;
-	top: 150%;
-	left: 0;
-	width: 100%;
-	min-height: 100svh;
-	background-color: rgba(0, 0, 0, 0.5);
-
+	top: -150%;
 	&-body {
-		padding: 2em;
-		width: 90%;
-		min-height: 50svh;
-		background-color: lightblue;
-		margin: 0 auto;
-		border-radius: 10px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: center;
-
 		img {
 			width: 150px;
 		}
@@ -47,10 +28,6 @@ export default {}
 		}
 
 		.buttons-box {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-
 			a {
 				width: 45%;
 
@@ -71,5 +48,96 @@ export default {}
 }
 .active {
 	top: 0;
+}
+
+@media (min-width: 576px) {
+	.popup {
+		&-body {
+			.buttons-box {
+				a {
+					width: 35%;
+					button {
+						&:hover {
+							background-color: green;
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+	.active {
+		top: 0;
+	}
+}
+
+@media (min-width: 768px) {
+	.popup {
+		&-body {
+			padding: 2em;
+			img {
+				height: 200px;
+				width: 200px;
+			}
+
+			h2 {
+				font-size: 1.4rem;
+			}
+			.buttons-box {
+				a {
+					width: 30%;
+				}
+			}
+		}
+	}
+	.active {
+		top: 0;
+	}
+}
+
+@media (min-width: 992px) {
+	.popup {
+		&-body {
+			padding: 4em;
+			img {
+				height: 200px;
+				width: 200px;
+			}
+
+			h2 {
+				font-size: 1.6rem;
+			}
+			.buttons-box {
+				a {
+					width: 25%;
+				}
+			}
+		}
+	}
+	.active {
+		top: 0;
+	}
+}
+@media (min-width: 1200px) {
+	.popup {
+		&-body {
+			img {
+				height: 150px;
+				width: 150px;
+			}
+
+			h2 {
+				font-size: 1.4rem;
+			}
+			.buttons-box {
+				a {
+					width: 30%;
+				}
+			}
+		}
+	}
+	.active {
+		top: 0;
+	}
 }
 </style>

@@ -24,7 +24,7 @@
 			/>
 
 			<div class="buttons-box">
-				<button><router-link to="/">Powrót</router-link></button>
+				<router-link to="/"><button>Powrót</button></router-link>
 				<button @click="validateForm">
 					<router-link to="/" :class="{ disabled: isDisabled }">Zapisz</router-link>
 				</button>
@@ -83,27 +83,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .popup {
-	width: 100%;
-	min-height: 100svh;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	display: flex;
-	align-items: center;
-
 	&-body {
-		padding: 2em;
-		width: 90%;
-		min-height: 50svh;
-		background-color: lightblue;
-		margin: 0 auto;
-		border-radius: 25px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
-
 		h2 {
 			font-size: 1.3rem;
 			margin-bottom: 1em;
@@ -123,27 +103,11 @@ export default {
 		}
 
 		.buttons-box {
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-evenly;
+			a {
+				width: 35%;
 
-			button {
-				width: 40%;
-				padding: 1em;
-				background: none;
-				border: none;
-				background-color: greenyellow;
-				border-radius: 8px;
-				font-weight: bold;
-
-				&:first-child {
-					background-color: rgb(241, 146, 109);
-				}
-
-				a {
-					text-decoration: none;
-					color: #000;
+				button {
+					width: 100%;
 				}
 			}
 		}

@@ -32,7 +32,7 @@
 			<div class="buttons-box">
 				<button @click="goBack">Powrót</button>
 				<button @click="validateForm">
-					<router-link to="/" class="link" :class="{ disabled: !isDisabled }">Oblicz</router-link>
+					<router-link to="/" :class="{ disabled: !isDisabled }">Oblicz</router-link>
 				</button>
 			</div>
 
@@ -80,8 +80,7 @@ export default {
 			) {
 				isError.value = false
 				isDisabled.value = true
-				let link = document.querySelector('.link')
-				link.click()
+				router.push({ name: 'home' })
 				store.commit('CALC_CALORIES', autoCalcState)
 				store.commit('STORE_CALORIES_AND_MAKROS')
 			} else {
@@ -109,27 +108,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .popup {
-	position: fixed;
-	top: 0;
-	left: 0;
-	display: flex;
-	align-items: center;
-	width: 100%;
-	min-height: 100svh;
-	background-color: rgba(0, 0, 0, 0.5);
-
 	&-body {
-		padding: 1em;
-		width: 80%;
-		min-height: 50svh;
-		background-color: lightblue;
-		margin: 0 auto;
-		border-radius: 25px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
-
 		h2 {
 			font-size: 1.3rem;
 		}
@@ -147,21 +126,6 @@ export default {
 		select {
 			option {
 				background-color: aquamarine;
-			}
-		}
-
-		button {
-			position: relative;
-			background: none;
-			border: none;
-			padding: 1em;
-			background-color: greenyellow;
-			border-radius: 8px;
-			font-weight: bold;
-
-			.link {
-				text-decoration: none;
-				color: #000;
 			}
 		}
 
